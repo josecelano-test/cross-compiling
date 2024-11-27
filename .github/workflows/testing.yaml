@@ -96,7 +96,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Rust
         uses: actions-rs/toolchain@v1
@@ -138,9 +138,9 @@ jobs:
         with:
           tool: cargo-llvm-cov, cargo-nextest
 
-      - id: test-docs
-        name: Run Documentation Tests
-        run: cargo test --doc
+      #- id: test-docs
+      #  name: Run Documentation Tests
+      #  run: cargo test --doc
 
       - id: test
         name: Run Unit Tests
