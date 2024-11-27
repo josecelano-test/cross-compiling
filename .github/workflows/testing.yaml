@@ -86,7 +86,7 @@ jobs:
         run: cargo machete
 
   build:
-    name: Build on ${{ matrix.os }} with toolchain ${{ matrix.toolchain }}
+    name: Build on ${{ matrix.os }} (${{ matrix.toolchain }})
     runs-on: ${{ matrix.os }}
 
     strategy:
