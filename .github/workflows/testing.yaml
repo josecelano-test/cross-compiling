@@ -85,6 +85,28 @@ jobs:
         name: Check Unused Dependencies
         run: cargo machete
 
+  build:
+    name: Build on ${{ matrix.os }} with toolchain ${{ matrix.toolchain }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        toolchain: [nightly, stable]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: ${{ matrix.toolchain }}
+          override: true
+
+      - name: Build project
+        run: cargo build --verbose
+
   unit:
     name: Units
     runs-on: ubuntu-latest
